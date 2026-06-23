@@ -39,8 +39,12 @@
 <script>
   iFrameResize({
     checkOrigin: true,
-    heightCalculationMethod: "bodyScroll"
-  }, "#usefullListIframe");
+    heightCalculationMethod: "bodyScroll",
+    onMessage: function (messageData) {
+      if (!messageData || messageData.message !== "usefull:scroll-top") return;
+      document.getElementById("iframe-container").scrollIntoView({ behavior: "smooth", block: "start" });
+    }
+  }, "#usefullIframe");
 </script>
 </body>
 </html>
